@@ -50,7 +50,7 @@ function notify(title,text,duration)
 	})
 end
 
-notify("Credits","Original: WeAreRump\nTikTok: hackingadoptme69")
+notify("Credits","Original: WeAreRump\nTikTok: hackingadoptme69",15)
 
 gui = {}
 holder = {}
