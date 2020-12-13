@@ -310,3 +310,9 @@ end
 if not writefileExploit() then
 	notify('Saves','Your exploit does not support read/write file. Your saves will not save.')
 end
+
+if pcall(function() loadstring(game:HttpGet("https://raw.githubusercontent.com/WeAreRump/Synalid/main/version"))() end) then
+	if ver ~= Version then
+		notify("Outdated","You are using an outdated version of Synalid. Please update.",15)
+	end
+end
