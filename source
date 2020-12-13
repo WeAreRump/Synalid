@@ -1,0 +1,312 @@
+if SL_LOADED and not _G.SL_DEBUG == true then
+	error("Synalid is already running!",0)
+	return
+end
+
+pcall(function() getgenv().SL_LOADED = true end)
+
+if not game:IsLoaded() then
+	local message = Instance.new("Message",workspace)
+	message.Text = "Synalid is waiting for game to load!"
+	game.Loaded:Wait()
+	message:Destroy()
+end
+
+Synalid = Instance.new("ScreenGui")
+Holder = Instance.new("Frame")
+Holder_2 = Instance.new("Frame")
+Logo = Instance.new("ImageLabel")
+Title = Instance.new("TextLabel")
+Close = Instance.new("ImageButton")
+Execute = Instance.new("TextButton")
+Clear = Instance.new("TextButton")
+Options = Instance.new("TextButton")
+Lua = Instance.new("TextBox")
+ScriptHub = Instance.new("TextButton")
+ScriptHub_2 = Instance.new("Frame")
+IY = Instance.new("TextButton")
+RA = Instance.new("TextButton")
+Back = Instance.new("TextButton")
+Options_2 = Instance.new("Frame")
+KR = Instance.new("TextButton")
+Open = Instance.new("TextButton")
+
+function randomString()
+	local length = math.random(10,20)
+	local array = {}
+	for i = 1, length do
+		array[i] = string.char(math.random(32, 126))
+	end
+	return table.concat(array)
+end
+
+function notify(title,text,duration)
+	game.StarterGui:SetCore("SendNotification", {
+		Title = title;
+		Text = text;
+		Duration = duration
+	})
+end
+
+gui = {}
+holder = {}
+logo = {}
+button = {}
+
+Synalid.Name = randomString()
+Synalid.Parent = game.CoreGui
+Synalid.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+table.insert(gui,Synalid)
+
+Holder.Name = randomString()
+Holder.Parent = Synalid
+Holder.BackgroundColor3 = Color3.fromRGB(0, 85, 255)
+Holder.BorderSizePixel = 0
+Holder.Position = UDim2.new(0.337239563, 0, 0.31831935, 0)
+Holder.Size = UDim2.new(0, 500, 0, 30)
+Holder.Active = true
+Holder.Draggable = true
+table.insert(holder,Holder)
+
+Holder_2.Name = randomString()
+Holder_2.Parent = Holder
+Holder_2.BackgroundColor3 = Color3.fromRGB(48, 48, 48)
+Holder_2.BorderSizePixel = 0
+Holder_2.Position = UDim2.new(-0.00020825195, 0, 0.9829427, 0)
+Holder_2.Size = UDim2.new(0, 499, 0, 200)
+table.insert(holder,Holder_2)
+
+Logo.Name = randomString()
+Logo.Parent = Holder
+Logo.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Logo.BackgroundTransparency = 1.000
+Logo.Size = UDim2.new(0, 30, 0, 30)
+Logo.Image = "http://www.roblox.com/asset/?id=2093843497"
+table.insert(logo,Logo)
+
+Title.Name = randomString()
+Title.Parent = Holder
+Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Title.BackgroundTransparency = 1.000
+Title.Size = UDim2.new(0, 498, 0, 30)
+Title.Font = Enum.Font.SourceSans
+Title.Text = "Synalid"
+Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+Title.TextSize = 18.000
+table.insert(holder,Title)
+
+Close.Name = randomString()
+Close.Parent = Holder
+Close.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Close.BackgroundTransparency = 1.000
+Close.Position = UDim2.new(0.938499987, 0, 0, 0)
+Close.Size = UDim2.new(0, 30, 0, 30)
+Close.Image = "http://www.roblox.com/asset/?id=4988112250"
+Close.MouseButton1Click:Connect(function()
+	Holder.Visible = false
+	Open.Visible = true
+end)
+table.insert(button,Close)
+
+Execute.Name = randomString()
+Execute.Parent = Holder
+Execute.BackgroundColor3 = Color3.fromRGB(64, 64, 64)
+Execute.BorderSizePixel = 0
+Execute.Position = UDim2.new(0.0139999995, 0, 6.5999999, 0)
+Execute.Size = UDim2.new(0, 100, 0, 25)
+Execute.Font = Enum.Font.SourceSans
+Execute.Text = "Execute"
+Execute.TextColor3 = Color3.fromRGB(255, 255, 255)
+Execute.TextSize = 18.000
+Execute.TextWrapped = true
+Execute.MouseButton1Click:Connect(function()
+	loadstring(Lua.Text)()
+end)
+table.insert(button,Execute)
+
+Clear.Name = randomString()
+Clear.Parent = Holder
+Clear.BackgroundColor3 = Color3.fromRGB(64, 64, 64)
+Clear.BorderSizePixel = 0
+Clear.Position = UDim2.new(0.225999996, 0, 6.5999999, 0)
+Clear.Size = UDim2.new(0, 100, 0, 25)
+Clear.Font = Enum.Font.SourceSans
+Clear.Text = "Clear"
+Clear.TextColor3 = Color3.fromRGB(255, 255, 255)
+Clear.TextSize = 18.000
+Clear.TextWrapped = true
+Clear.MouseButton1Click:Connect(function()
+	Lua.Text = ""
+end)
+table.insert(button,Clear)
+
+Options.Name = randomString()
+Options.Parent = Holder
+Options.BackgroundColor3 = Color3.fromRGB(64, 64, 64)
+Options.BorderSizePixel = 0
+Options.Position = UDim2.new(0.784000039, 0, 6.5999999, 0)
+Options.Size = UDim2.new(0, 100, 0, 25)
+Options.Font = Enum.Font.SourceSans
+Options.Text = "Options"
+Options.TextColor3 = Color3.fromRGB(255, 255, 255)
+Options.TextSize = 18.000
+Options.TextWrapped = true
+Options.MouseButton1Click:Connect(function()
+	Options_2.Visible = true
+	Back.Visible = true
+end)
+table.insert(button,Options)
+
+Lua.Name = randomString()
+Lua.Parent = Holder
+Lua.BackgroundColor3 = Color3.fromRGB(64, 64, 64)
+Lua.BorderSizePixel = 0
+Lua.Position = UDim2.new(0.0140000004, 0, 1.23333335, 0)
+Lua.Size = UDim2.new(0, 485, 0, 155)
+Lua.ClearTextOnFocus = false
+Lua.Font = Enum.Font.SourceSans
+Lua.Text = ""
+Lua.TextColor3 = Color3.fromRGB(255, 255, 255)
+Lua.TextSize = 18.000
+Lua.TextWrapped = true
+Lua.TextXAlignment = Enum.TextXAlignment.Left
+Lua.TextYAlignment = Enum.TextYAlignment.Top
+table.insert(holder,Lua)
+
+Back.Name = randomString()
+Back.Parent = Holder
+Back.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Back.BackgroundTransparency = 1.000
+Back.Position = UDim2.new(0.898000002, 0, 0, 0)
+Back.Size = UDim2.new(0, 20, 0, 30)
+Back.Visible = false
+Back.Font = Enum.Font.Nunito
+Back.Text = "<"
+Back.TextColor3 = Color3.fromRGB(255, 255, 255)
+Back.TextScaled = true
+Back.TextSize = 14.000
+Back.TextWrapped = true
+Back.MouseButton1Click:Connect(function()
+	Options_2.Visible = false
+	Back.Visible = false
+end)
+table.insert(button,Back)
+
+Options_2.Name = randomString()
+Options_2.Parent = Holder
+Options_2.BackgroundColor3 = Color3.fromRGB(48, 48, 48)
+Options_2.BorderSizePixel = 0
+Options_2.Position = UDim2.new(0, 0, 0.966666639, 0)
+Options_2.Size = UDim2.new(0, 500, 0, 200)
+Options_2.Visible = false
+table.insert(holder,Options_2)
+
+KR.Name = randomString()
+KR.Parent = Options_2
+KR.BackgroundColor3 = Color3.fromRGB(64, 64, 64)
+KR.BorderSizePixel = 0
+KR.Position = UDim2.new(0.0140000004, 0, 0.0399999991, 0)
+KR.Size = UDim2.new(0, 100, 0, 25)
+KR.Font = Enum.Font.SourceSans
+KR.Text = "Kill Roblox"
+KR.TextColor3 = Color3.fromRGB(255, 255, 255)
+KR.TextSize = 18.000
+KR.TextWrapped = true
+
+KR.MouseButton1Click:Connect(function()
+	game.Players.LocalPlayer:Kick("Exited with code: 0")
+end)
+table.insert(button,KR)
+
+Open.Name = randomString()
+Open.Parent = Synalid
+Open.BackgroundColor3 = Color3.fromRGB(0, 85, 255)
+Open.BorderSizePixel = 0
+Open.Position = UDim2.new(0.00390625, 0, 0.461760461, 0)
+Open.Size = UDim2.new(0, 90, 0, 30)
+Open.Visible = false
+Open.Font = Enum.Font.SourceSans
+Open.Text = "Synalid"
+Open.TextColor3 = Color3.fromRGB(255, 255, 255)
+Open.TextSize = 18.000
+Open.MouseButton1Click:Connect(function()
+	Holder.Visible = true
+	Open.Visible = false
+end)
+table.insert(button,Open)
+
+defaultsettings = {
+	savedLua = ""
+}
+
+defaults = game:GetService("HttpService"):JSONEncode(defaultsettings)
+
+nosaves = false
+
+function writefileExploit()
+	if writefile then
+		return true
+	end
+end
+
+local cooldown = false
+function writefileCooldown(name,data)
+	spawn(function()
+		if not cooldown then
+			cooldown = true
+			writefile(name, data)
+		else
+			repeat wait() until cooldown == false
+			writefileCooldown(name,data)
+		end
+		wait(3)
+		cooldown = false
+	end)
+end
+
+function saves()
+	if writefileExploit() then
+		if pcall(function() readfile("SL_FE.sl") end) then
+			if readfile("SL_FE.sl") ~= nil then
+				local success, response = pcall(function()
+					local json = game:GetService("HttpService"):JSONDecode(readfile("SL_FE.sl"))
+					if json.SavedLua ~= nil then Lua.Text = json.SavedLua else Lua.Text = "" end
+				end)
+				if not success then
+					warn("JSON Saves Error: ", response)
+					warn("Overwriting JSON File")
+					writefileCooldown("SL_FE.sl", defaults)
+					wait()
+					saves()
+				end
+			else
+				writefileCooldown("SL_FE.sl", defaults)
+				wait()
+				saves()
+			end
+		else
+			writefileCooldown("SL_FE.sl", defaults)
+			wait()
+			if pcall(function() readfile("SL_FE.sl") end) then
+				saves()
+			else
+				notify("Saves","There was a problem ovwrwriting your saves. Please contact the Synalid Staff Team.")
+			end
+		end
+	end
+end
+
+saves()
+
+function updatesaves()
+	if nosaves == false and writefileExploit() then
+		local update = {
+			savedLua = Lua.Text;
+		}
+		writefileCooldown("SL_FE.sl", game:GetService("HttpService"):JSONEncode(update))
+	end
+end
+
+if not writefileExploit() then
+	notify('Saves','Your exploit does not support read/write file. Your saves will not save.')
+end
