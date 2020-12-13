@@ -50,6 +50,8 @@ function notify(title,text,duration)
 	})
 end
 
+notify("Credits","Original: WeAreRump\nTikTok: hackingadoptme69")
+
 gui = {}
 holder = {}
 logo = {}
