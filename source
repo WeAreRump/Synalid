@@ -31,7 +31,7 @@ Options_2 = Instance.new("Frame")
 KR = Instance.new("TextButton")
 Open = Instance.new("TextButton")
 
-ver = "0.0.1"
+ver = "0.0.2"
 
 function randomString()
 	local length = math.random(10,20)
@@ -49,8 +49,6 @@ function notify(title,text,duration)
 		Duration = duration
 	})
 end
-
-notify("Credits","Original: WeAreRump\nTikTok: hackingadoptme69",15)
 
 gui = {}
 holder = {}
@@ -94,7 +92,7 @@ Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 Title.BackgroundTransparency = 1.000
 Title.Size = UDim2.new(0, 498, 0, 30)
 Title.Font = Enum.Font.SourceSans
-Title.Text = "Synalid - v"..ver
+Title.Text = "Synalid - "..ver
 Title.TextColor3 = Color3.fromRGB(255, 255, 255)
 Title.TextSize = 18.000
 table.insert(holder,Title)
@@ -240,7 +238,7 @@ end)
 table.insert(button,Open)
 
 defaultsettings = {
-	savedLua = ""
+	SavedLua = ""
 }
 
 defaults = game:GetService("HttpService"):JSONEncode(defaultsettings)
@@ -294,7 +292,7 @@ function saves()
 			if pcall(function() readfile("SL_FE.sl") end) then
 				saves()
 			else
-				notify("Saves","There was a problem overwriting your saves. Please contact the Synalid Staff Team.")
+				notify("Saves","There was a problem ovwrwriting your saves. Please contact the Synalid Staff Team.")
 			end
 		end
 	end
@@ -305,7 +303,7 @@ saves()
 function updatesaves()
 	if nosaves == false and writefileExploit() then
 		local update = {
-			savedLua = Lua.Text;
+			SavedLua = Lua.Text;
 		}
 		writefileCooldown("SL_FE.sl", game:GetService("HttpService"):JSONEncode(update))
 	end
@@ -315,8 +313,8 @@ if not writefileExploit() then
 	notify('Saves','Your exploit does not support read/write file. Your saves will not save.')
 end
 
-if pcall(function() loadstring(game:HttpGet("https://raw.githubusercontent.com/WeAreRump/Synalid/main/version"))() end) then
+if pcall(function() loadstring(game:HttpGet("https://raw.githubusercontent.com/WeAreRump/Synalid/main/version")) end) then
 	if ver ~= Version then
-		notify("Outdated","You are using an outdated version of Synalid. Please update.",20)
+		notify("Outdated","You are using an outdated version of Synalid. Please update.")
 	end
 end
