@@ -31,6 +31,8 @@ Options_2 = Instance.new("Frame")
 KR = Instance.new("TextButton")
 Open = Instance.new("TextButton")
 
+ver = "0.0.1"
+
 function randomString()
 	local length = math.random(10,20)
 	local array = {}
@@ -90,7 +92,7 @@ Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 Title.BackgroundTransparency = 1.000
 Title.Size = UDim2.new(0, 498, 0, 30)
 Title.Font = Enum.Font.SourceSans
-Title.Text = "Synalid"
+Title.Text = "Synalid - v"..ver
 Title.TextColor3 = Color3.fromRGB(255, 255, 255)
 Title.TextSize = 18.000
 table.insert(holder,Title)
@@ -290,7 +292,7 @@ function saves()
 			if pcall(function() readfile("SL_FE.sl") end) then
 				saves()
 			else
-				notify("Saves","There was a problem ovwrwriting your saves. Please contact the Synalid Staff Team.")
+				notify("Saves","There was a problem overwriting your saves. Please contact the Synalid Staff Team.")
 			end
 		end
 	end
@@ -313,6 +315,6 @@ end
 
 if pcall(function() loadstring(game:HttpGet("https://raw.githubusercontent.com/WeAreRump/Synalid/main/version"))() end) then
 	if ver ~= Version then
-		notify("Outdated","You are using an outdated version of Synalid. Please update.",15)
+		notify("Outdated","You are using an outdated version of Synalid. Please update.",20)
 	end
 end
